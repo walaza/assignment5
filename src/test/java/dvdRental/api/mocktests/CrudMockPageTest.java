@@ -6,17 +6,23 @@
 package dvdRental.api.mocktests;
 
 import dvdrental.api.CrudPageMockExample;
+import static javax.swing.UIManager.get;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.springframework.http.MediaType;
+import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.RequestBuilder;
+import org.springframework.test.web.servlet.ResultMatcher;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 /**
- *
+ *Customer createCustomer(String name, String surname, String idNumber
  * @author bulelani
  */
 public class CrudMockPageTest {
@@ -31,59 +37,36 @@ public class CrudMockPageTest {
                 .build();
     }
 
-}
-/* @org.testng.annotations.Test
-    public void read() throws Exception {
-
+    @org.testng.annotations.Test
+    public void read() throws Exception{
         mockMvc
-                .perform(get(BASE_URL+"api/test/read/{id}"))
+                .perform((RequestBuilder) get(BASE_URL+"api/test/read/{id}"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string("{\"name\":\"john\",\"age\":43}"));
+                .andExpect((ResultMatcher) content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect((ResultMatcher) content().string("{\"name\":\"bulelani\",\"surname\":walaza}"));
     }
-
-    @Test
-    public void readAll() throws Exception {
-
+    
+    @org.testng.annotations.Test
+    public void readAll() throws Exception{
         mockMvc
-                .perform(get(BASE_URL+"api/test/readall"))
+                .perform((RequestBuilder) get(BASE_URL+"api/test/readall"))
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(
-                        content().string(
-                                "{\"lecturers\":[{\"name\":\"john\",\"age\":43},"
-                                        + "{\"name\":\"peter\",\"age\":40}]}"));
+                .andExpect((ResultMatcher) content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect((ResultMatcher) content().string(
+                                "{\"customers\":[{\"name\":\"bulelani\",\"surname\":walaza},"
+                                        + "{\"name\":\"sihle\",\"surname\":zenzile}]}"));
     }
-
-    @Test
-    public void create() throws Exception {
-
+    
+   /* @org.testng.annotations.Test
+    public void create() throws Exception{
         mockMvc
                 .perform(
                         post(BASE_URL+"api/test/create").contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
-                                .content("{\"name\":\"mary\",\"age\":30}"))
+                                .content("{\"name\":\"thando\",\"surname\":booi}"))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(
-                        content().string("{\"name\":\"mary\",\"age\":30}"));
-    }
-
-    @Test
-    public void update() throws Exception {
-
-        mockMvc
-                .perform(
-                        put(BASE_URL+"api/test/update").contentType(MediaType.APPLICATION_JSON).content(
-                                "{\"name\":\"mary\",\"age\":10}")).andExpect(
-                status().isOk());
-    }
-
-    @Test
-    public void remove() throws Exception {
-
-        mockMvc
-                .perform(
-                        delete(BASE_URL+"api/test/delete").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                        content().string("{\"name\":\"thando\",\"surname\":booi}"));
     }*/
+}
