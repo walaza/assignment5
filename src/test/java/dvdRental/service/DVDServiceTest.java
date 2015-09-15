@@ -68,6 +68,16 @@ public class DVDServiceTest extends AbstractTestNGSpringContextTests{
     @org.testng.annotations.Test
     public void testGetDVD() throws Exception{
             List<DVD> dvd = service.getDVD();
-            Assert.assertTrue(dvd.size() == 1);
+            Assert.assertEquals(dvd.size(), 1);
+    }
+    @org.testng.annotations.Test
+    public void testGetDVDByTitle() throws Exception{
+       DVD dvd = service.getDVDByTitle("The matrix");
+       Assert.assertNotNull(dvd);
+    }
+    @org.testng.annotations.Test
+    public void testGetDVDByYearReleased() throws Exception{
+       DVD dvd = service.getDVDByYearReleased("2015");
+       Assert.assertNotNull(dvd);
     }
 }

@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface RentalService {
     List<Rental> getAllRentals();
+    List<Rental> getRentalByDate(String rdate);
 }

@@ -14,5 +14,11 @@ import java.util.List;
  * @author bulelani
  */
 public interface DVDService {
+    DVD findById(Long id);
+    DVD save(DVD entity);
+    void delete(DVD entity);
+    DVD update(DVD entity);
     List<DVD> getDVD();
+    DVD getDVDByTitle(String title);
+    DVD getDVDByYearReleased(String year);
 }
